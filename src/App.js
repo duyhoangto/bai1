@@ -1,24 +1,41 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-const App = () => {
-  const count = useSelector(state => state.counter.count);
-  const dispatch = useDispatch();
+import Mycomponent from './component/mycomponent';
+import React from 'react';
+import UserInfor from './component/userinfor';
+import Display from './component/Display';
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          hello world
-        </p>
-        <div>Count = {count}</div>
-        <button onClick={() => dispatch(increaseCounter())}>Increase</button>
-        <button onClick={() => dispatch(decreaseCounter())}>Decrease</button>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    listUser: [
+      { id: 1, name: "hoidanit", age: "30" },
+      { id: 2, name: "duyhoangto", age: "18" },
+      { id: 3, name: "to duy hoang ", age: "10" }
+    ]
+  }
+
+  handleAddnewUser = (userObj) => {
+    console.log("check data sucess :", userObj)
+    this.setState({
+      listUser: [userObj, ...this.state.listUser]
+    })
+  }
+
+  render() {
+
+    return (
+      <div>
+        hello world with toduyhoang &amp; HOI DAN IT ahihi
+        <UserInfor handleAddnewUser={this.handleAddnewUser} />
+        <hr />
+        <Display listUser={this.state.listUser} />
+        <br />
+        <Mycomponent />
+      </div>
+    );
+  }
 }
 
 export default App;

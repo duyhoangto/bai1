@@ -47,31 +47,32 @@ import Display from './component/Display';
 // }
 
 const App = (props) => {
-  const [listUser, setlistUser] = useState(
-    [
-      { id: 1, name: "hoidanit", age: "30" },
-      { id: 2, name: "duyhoangto", age: "18" },
-      { id: 3, name: "to duy hoang ", age: "10" }
-    ]
-  )
+  // const [listUser, setlistUser] = useState(
+  //   [
+  //     { id: 1, name: "hoidanit", age: "30" },
+  //     { id: 2, name: "duyhoangto", age: "18" },
+  //     { id: 3, name: "to duy hoang ", age: "10" }
+  //   ]
+  // )
 
-  const handleAddnewUser = (userObj) => {
-    setlistUser([userObj, ...listUser])
-  }
+  // const handleAddnewUser = (userObj) => {
+  //   setlistUser([userObj, ...listUser])
+  // }
 
-  const handleDeleteUser = (userId) => {
-    let listUserClone = listUser;
-    listUserClone = listUserClone.filter(item => item.id !== userId)
-    setlistUser(listUserClone)
-  }
+  // const handleDeleteUser = (userId) => {
+  //   let listUserClone = listUser;
+  //   listUserClone = listUserClone.filter(item => item.id !== userId)
+  //   setlistUser(listUserClone)
+  // }
   return (
-    <div>
+    <div className='app-ctn'>
       hello world with toduyhoang &amp; HOI DAN IT ahihi
-      <UserInfor handleAddnewUser={handleAddnewUser} />
+      <button >Test</button >
+      {/* <UserInfor handleAddnewUser={handleAddnewUser} />
       <hr />
       <Display listUser={listUser} handleDeleteUser={handleDeleteUser} />
       <br />
-      <Mycomponent />
+      <Mycomponent /> */}
     </div>
   )
 }

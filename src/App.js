@@ -1,12 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import Mycomponent from './component/mycomponent';
-import React, { useState } from 'react';
-import UserInfor from './component/userinfor';
-import Display from './component/Display';
-
+import Header from './component/header/header';
 // class App extends React.Component {
 //   state = {
 //     listUser: [
@@ -47,31 +41,27 @@ import Display from './component/Display';
 // }
 
 const App = (props) => {
-  const [listUser, setlistUser] = useState(
-    [
-      { id: 1, name: "hoidanit", age: "30" },
-      { id: 2, name: "duyhoangto", age: "18" },
-      { id: 3, name: "to duy hoang ", age: "10" }
-    ]
-  )
+  // const [listUser, setlistUser] = useState(
+  //   [
+  //     { id: 1, name: "hoidanit", age: "30" },
+  //     { id: 2, name: "duyhoangto", age: "18" },
+  //     { id: 3, name: "to duy hoang ", age: "10" }
+  //   ]
+  // )
 
-  const handleAddnewUser = (userObj) => {
-    setlistUser([userObj, ...listUser])
-  }
+  // const handleAddnewUser = (userObj) => {
+  //   setlistUser([userObj, ...listUser])
+  // }
 
-  const handleDeleteUser = (userId) => {
-    let listUserClone = listUser;
-    listUserClone = listUserClone.filter(item => item.id !== userId)
-    setlistUser(listUserClone)
-  }
+  // const handleDeleteUser = (userId) => {
+  //   let listUserClone = listUser;
+  //   listUserClone = listUserClone.filter(item => item.id !== userId)
+  //   setlistUser(listUserClone)
+  // }
   return (
     <div>
-      hello world with toduyhoang &amp; HOI DAN IT ahihi
-      <UserInfor handleAddnewUser={handleAddnewUser} />
-      <hr />
-      <Display listUser={listUser} handleDeleteUser={handleDeleteUser} />
-      <br />
-      <Mycomponent />
+
+      <Header />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.scss';
 import Header from './component/header/header';
+import { Link } from "react-router-dom"
 // class App extends React.Component {
 //   state = {
 //     listUser: [
@@ -62,6 +63,15 @@ const App = (props) => {
     <div>
 
       <Header />
+      <div>
+        <div>
+          <button>
+            <Link to="/users">Go to User page </Link>
+          </button>
+          <button>   <Link to="/admins">Go to Admin page </Link></button>
+        </div>
+
+      </div>
     </div>
   )
 }

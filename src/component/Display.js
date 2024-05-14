@@ -3,9 +3,26 @@ import './Display.scss';
 import logo from './../logo.svg';
 class Display extends React.Component {
     constructor(props) {
+        console.log("caLL 1")
         super(props)
         this.state = {
             isShowListUser: true
+        }
+    }
+    // componentDidMount() {
+    //     console.log("call me did mount")
+    //     setTimeout(() => {
+    //         document.title = "duyhoangto"
+    //     }, 3000);
+    // }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("did update", this.props, prevProps)
+        if (this.props.listUser !== prevProps.listUser) {
+            if (this.props.listUser.length === 5) {
+                alert("you got 5 user")
+            }
         }
     }
 
@@ -15,6 +32,7 @@ class Display extends React.Component {
         })
     }
     render() {
+        console.log("render")
         const { listUser } = this.props;
         console.table(listUser)
         // Check if listUser is indeed an array and has elements

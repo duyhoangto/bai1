@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.scss';
 import Header from './component/header/header';
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+
 // class App extends React.Component {
 //   state = {
 //     listUser: [
@@ -60,16 +61,27 @@ const App = (props) => {
   //   setlistUser(listUserClone)
   // }
   return (
-    <div>
+    <div className='app-container'>
+      <div className='header-container'>
+        <Header />
+      </div>
+      <div className='main-container'>
+        <div className='sidanav-container'>
 
-      <Header />
+        </div>
+        <div className='app-container'>
+          <Outlet />
+        </div>
+      </div>
+
+
       <div>
-        <div>
+        {/* <div>
           <button>
             <Link to="/users">Go to User page </Link>
           </button>
           <button>   <Link to="/admins">Go to Admin page </Link></button>
-        </div>
+        </div> */}
 
       </div>
     </div>

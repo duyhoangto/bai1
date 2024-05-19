@@ -1,4 +1,5 @@
 
+import { delay } from 'lodash';
 import axios from './Callapi';
 const postCreateNewUser = (email, password, username, role, image) => {
     const form = new FormData();
@@ -38,10 +39,14 @@ const getUserwithPaginate = (page, limit) => {
     return axios.get(`api/v1/participant?page=${page}&limit=${limit}`)
 }
 const postLogin = (email, password) => {
-    return axios.post(`api/v1/login`, { email, password })
+    return axios.post(`api/v1/login`, { email, password, delay: 2000 })
 }
 
 const postRegister = (email, password, username) => {
     return axios.post(`api/v1/register`, { email, password, username })
 }
-export { postCreateNewUser, getAllUser, putUpdateUser, deleteUser, getUserwithPaginate, postLogin, postRegister }
+
+const getQuizByUser = () => {
+    return axios.get('api/v1/quiz-by-participant')
+}
+export { postCreateNewUser, getAllUser, putUpdateUser, deleteUser, getUserwithPaginate, postLogin, postRegister, getQuizByUser }

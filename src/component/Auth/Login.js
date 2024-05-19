@@ -4,12 +4,16 @@ import './Login.scss'; // Import your custom styles
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../../services/APIservice';
 import { isValidDateValue } from '@testing-library/user-event/dist/utils';
+import { useDispatch } from 'react-redux';
+import { doLogin } from '../../redux/action/userAction';
+import { ImSpinner10 } from "react-icons/im"
 const Login = (props) => {
 
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
     const navigate = useNavigate();
-
+    const dispatch = useDispatch()
+    const [isLoading, setIsloading] = useState(false);
     const validateEmail = (email) => {
         return String(email)
             .toLocaleLowerCase()
@@ -29,16 +33,19 @@ const Login = (props) => {
             return
         }
         //submit aPis
-
+        setIsloading(true);
         let data = await postLogin(email, password)
 
         if (data && data.EC === 0) {
+            dispatch(doLogin(data))
             toast.success(data.EM)
+            setIsloading(false)
             navigate('/')
 
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM)
+            setIsloading(false)
         }
     }
     return (
@@ -63,7 +70,9 @@ const Login = (props) => {
                         <div className="forgot-password text-right">
                             <span>Forgot password?</span>
                         </div>
-                        <button onClick={() => handleLogin()} className="btn btn-primary btn-block mt-4">Login to Pet Spa</button>
+                        <button disabled={isLoading} onClick={() => handleLogin()} className="btn btn-primary btn-block mt-4 login-btn">
+                            {isLoading === true && <ImSpinner10 className="loaderIcon" />}
+                            Login to Pet Spa</button>
                     </div>
 
                     <div className="text-center mt-4">

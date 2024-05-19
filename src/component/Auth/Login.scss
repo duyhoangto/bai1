@@ -15,6 +15,19 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f2f5;
+    .loaderIcon {
+      margin-right: 7px;
+      top: 2px;
+      animation: spin 1s infinite linear;
+  }
+  @keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
   }
   
   .login-background {
@@ -78,7 +91,7 @@ body {
     cursor: pointer;
   }
   
-  button {
+  button  {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -88,12 +101,19 @@ body {
     font-size: 16px;
     width: 100%;
     margin-top: 20px;
+    &:hover {
+      background-color: #0056b3;
+      cursor: pointer;
+      
+    }
+   
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .login-btn :disabled {
+    background: #dddddd !important;
+    color: #afafaf !important;
+    cursor: no-drop;
   }
-  
   .text-center p {
     margin-bottom: 10px;
   }
